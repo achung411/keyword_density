@@ -1,0 +1,37 @@
+<%= content_for :title do %>
+	Keyword Density
+<% end %>
+<script>
+$(document).ready(function() {
+	$('form').submit(function() {
+		$.post(
+			$(this).attr('action'),
+			$(this).serialize(),
+			function(data) {
+				$('#results').html(data);
+			}, "html");
+		$.post(
+			$(this).attr('action')+".json",
+			$(this).serialize(),
+			function(data) {
+				$('#container').highcharts({
+					chart: { type: 'pie' },
+					title: { text: 'Keyword frequency for <%= @address %>' },
+					series: [{ data: data }]
+				});
+			},"json");
+		return false;
+	});
+});
+</script>
+<h1>URL Keyword Analyzer</h1>
+<form action="/main/show" method="post">
+	<input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+	URL to analyze:
+	<input type="text" name="address" value='http://www.byu.edu'>
+	<button type="submit">Fetch</button>
+</form>
+
+<div id="results"></div>
+
+<div id="container"></div>

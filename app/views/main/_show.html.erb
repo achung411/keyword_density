@@ -1,0 +1,19 @@
+<h2>Results</h2>
+<table id="results" class="table">
+	<thead>
+		<tr>
+			<th>Word</th>
+			<th>Number of occurrances</th>
+		</tr>
+	</thead>
+	<tbody>
+		<% if @keywords %>
+			<% @keywords.each do |word, frequency| %>
+			<tr>
+				<td><%= word %></td>
+				<td><%= frequency %></td>
+			</tr>
+			<% end %>
+		<% end %>
+	</tbody>
+</table>

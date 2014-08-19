@@ -1,3 +1,15 @@
-// Place all the styles related to the Main controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
+* {
+	margin: 0;
+	padding: 0;
+}
+
+#results, #container {
+	display: inline-block;
+	vertical-align: top;
+	width: 400px;
+	text-align: center;
+}
+
+	#results td, #results th {
+		padding: 5px 10px;
+	}
